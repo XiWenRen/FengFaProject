@@ -39,7 +39,7 @@ body {
 
 /* Carousel base class */
 .carousel {
-  height: 550px;
+  min-height: 550px;
   width: 100%;
   position: fixed;
   z-index: 9;
