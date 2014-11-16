@@ -11,7 +11,7 @@
 
 	<body>
 		<!--导航栏-->
-		<head>
+		<header>
 			<nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="MyCollapse">
 				<div id="logo-front" class="nav navbar-nav">
 					<div id="logo">
@@ -43,7 +43,7 @@
 					</li>
 				</ul>
 			</nav>
-		</head>
+		</header>
 		<!--轮播-->
 		<div class="carousel" id="myCarousel">
 			<div class="carousel-inner">
@@ -81,27 +81,35 @@
 			</div>
 		</div>
 		<!--新闻简讯部分-->
-		<div class="container-fluid" id="newsArt">
-			<div class="col-lg-6" id="aboutUs"><h1><center>关于奉发</center></h1></div>
-			<div class="col-lg-9 hidden"></div>
-			<div class="col-lg-9 hidden"></div>
-			<div class="col-lg-6" id="tasks"></div>
+		<div class="news" id="newsArt-back">
+			<!--前面-->
+			<div id="newsArt-front">
+				<div class="tit" id="about">荣誉勋章</div>
+				<div class="tit" id="tasks">关于奉发</div>
+			</div>
+			<div id="artContent">
+				<section>
+					<p>浦发集团是浦东新区投融资建设核心载体，是新区对重大基础设施项目实施市场化运作的主要操作平台之一；同时，承担着对所属企业和托管国有及集体企业的改制重组、资产经营、资本运作任务。集团组建以来，以推进产融结合为主线，以强化功能带动主业发展，以拓展主业支撑功能发挥，取得了显著成绩。截至2013年底，集团投资或代建的上海市和浦东新区的市政道路、轨道交通等基础设施项目近400项（其中市重大工程项目20余项），项目总投资规模约1444亿元，累计完成投资额约1035亿元；集团投资开发并竣工的保障房、商品房项目20余项，累计完成投资额约200亿元、建筑面积约450万平方米；集团公司和所属企业累计完成融资约1588亿元；集团系统企业（含托管企业）累计完成改制重组834多家次（其中注销壳体企业106家），共清理、处置不实不良资产约22亿元。</p> 
+				</section>
+			</div>
 		</div>
+		
 		<!--图片简讯部分-->
-		<div id="newsPic">
-			<h1 class="page-header text-center">工程鉴赏</h1>
-			<!--<div class="mygallary">
-				<div class="mygallary-show">
-					<img src="img/carousel-4.jpg" />
-				</div>-->
-				<ul class="mygallary-wait">
-					<li>
-						<img src="img/carousel-4.jpg" />
-					</li>
-					<li>
-						<img src="img/carousel-5.jpg" />
-					</li>
-				</ul>
+		<div class="news" id="newsPic">
+			<div class="pic-row">
+				<div class="pic-each">
+					<div class="pic-each-hover"></div>
+					<img src="img/carousel-3.jpg">
+					<section>图片介绍1</section>
+				</div>
+				<div class="pic-each"><img src="img/carousel-4.jpg"></div>
+				<div class="pic-each"><img src="img/carousel-5.jpg"></div>
+			</div>
+			<div class="pic-row">
+				<div class="pic-each"><img src="img/carousel-3.jpg"></div>
+				<div class="pic-each"><img src="img/carousel-4.jpg"></div>
+				<div class="pic-each"><img src="img/carousel-5.jpg"></div>
+			</div>
 		</div>
 		<!--底部联系我们-->
 		<footer></footer>

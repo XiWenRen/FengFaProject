@@ -11,7 +11,7 @@
 	background-image: -moz-linear-gradient(-45deg, transparent 65%, #FFFFFF 65%, #FFFFFF 100%, transparent 100%, transparent);
 	background-image: -ms-linear-gradient(-45deg, transparent 65%, #FFFFFF 65%, #FFFFFF 100%, transparent 100%, transparent);
 	background-image: -webkit-linear-gradient(-45deg, transparent 0%, #FFFFFF 0%, #FFFFFF 35%, transparent 35%, transparent);
-	box-shadow: 0px 1px 5px #222;
+	box-shadow: 0px 1px 5px #5A5A5A;
 }
 
 #MyCollapse a {
@@ -52,75 +52,100 @@
 	background-image: -ms-linear-gradient(-45deg, transparent 60%, rgba(255, 255, 255, .2) 60%, rgba(255, 255, 255, .2) 80%, transparent 80%, rgba(255, 255, 255, .2) 100%, transparent 100%, transparent);
 	z-index: 10;
 }
-/*内容模块*/
 
-#newsPic,
-#newsArt {
+/*内容模块*/
+.news {
 	width: 100%;
 	height: 550px;
-	z-index: 20;
 	position: absolute;
+	z-index: 20;
 }
 /*新闻*/
-#newsArt {
-	margin-top: 600px;
+#newsArt-back {
+	background-color: #999;
+	background-image: url(../img/pattern.png);
+}
+
+#newsArt-front {
+	width: 100%;
+	height: 100%;
+	float: left;
 	background-color: #7ACE7C;
 	background-image: url(../img/pattern.png);
 }
 
-#newsArt div {
-	height: 100%;
+.tit {
+	width: 48%;
+	font-size: 50px;
+	line-height: 50px;
+	color: #fff;
+	cursor: pointer;
 }
 
-#aboutUs {
-	background-color: white;
-	border-right: 1px solid black;
+#about {
+	text-align: right;
+	float: left;
+	border-right: 3px solid #aaa;
 }
 
 #tasks {
-	background-color: white;
-	height: 100%;
+	text-align: left;
+	float: right;
+	border-left: 3px solid #aaa;
+}
+
+#artContent {
+	width: 70%;
+	height: 550px;
+	color: #fff;
+	padding: 15px;
+	font-family: "微软雅黑";
+	font-size: 26px;
+	text-indent: 2em;
+	float: left;
+	display: none;
 }
 
 /*图片*/
 #newsPic {
-	background-color: white;
-	margin-top: 1150px;
+	min-height: 700px;
+	background-color: #777;
 	background-image: url(../img/groovepaper.png);
+	padding-top: 5%;
+	padding-bottom: 2%;
 }
 
-.mygallary {
+.pic-row {
 	width: 100%;
+	height: 50%;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+.pic-each {
+	width: 33.33333333%;
 	height: 100%;
-	margin: 0px;
-}
-
-.mygallary-show {
-	width: 100%;
-	height: 400px;
-}
-
-.mygallary-show img {
-	width: 100%;
-	height: 400px;
-}
-
-.mygallary-wait {
-	width: 100%;
-	height: 150px;
-	display: block;
-	padding: 30px;
-}
-
-.mygallary-wait li {
-	width: 160px;
-	height: 90px;
-	display: block;
+	padding: 15px;
 	float: left;
+	overflow: hidden;
 }
 
-.mygallary-wait li img {
-	width: 160px;
-	height: 90px;
-	border: 2px solid white;
+.pic-each img{
+	display: block;
+	position: absolute;
+}
+
+.pic-each-hover {
+	width: 375px;
+	height: 218px;
+	display: block;
+	position: absolute;
+}
+
+.pic-each section {
+	padding-top: 5px;
+	font-size: 18px;
+	font-style: italic;
+	color: #7ACE7C;
+	text-align: center;
 }
