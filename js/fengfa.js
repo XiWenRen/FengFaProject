@@ -3,7 +3,8 @@ $(document).ready(function(){
 	var marginTop = 600;
 	$(".news").each(function(){
 		$(this).css("marginTop",marginTop + "px");
-		marginTop = 600 + 550; 
+		var prevHeight = $(this).css("height").removePX();
+		marginTop += parseInt(prevHeight);
 	});
 	//设置标题位置
 	setTitMargin();
@@ -48,6 +49,7 @@ var setNewsPicHeight = function(){
 	$(".pic-each-hover").height(picHeight);
 	$(".pic-each-hover").width(picWidth);
 	$(".pic-each section").height(parentHeight - picHeight);
+	$(".pic-each section").width(picWidth);
 	$(".pic-each section").css("marginTop",picHeight + "px");
 }
 
@@ -85,6 +87,12 @@ var getAnother = function(tit){
 $(".pic-each").hover(function(){
 	$(this).children().first().toggleClass("hover-show");
 	$(this).children().last().toggleClass("pic-section-hover");
+});
+
+$(".pic-each-hover").hover(function(){
+	$(this).children().first().animate({marginTop:"80px"},300);
+},function(){
+	$(this).children().first().animate({marginTop:"0px"},300);
 })
 
 String.prototype.removePX =  function() {
