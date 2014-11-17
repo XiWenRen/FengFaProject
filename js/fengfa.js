@@ -29,23 +29,31 @@ var setTitMargin = function(){
 	$("#tasks").css("paddingLeft",marginWidth + "px");*/
 }
 
+var setPicRowCenter = function(){
+	
+}
+
 /**
- * 设置首页展示图片的宽高
+ * 设置首页展示图片的宽高,图片比例16/9
  */
 var setNewsPicHeight = function(){
 	//获取图片父元素高度
-	var parentHeight = $(".pic-each").height();
 	var parentWidth = $(".pic-each").width();
+	var parentHeight = $(".pic-each").height();
 	//显示两行图片，每行3张，总计6张
-	var picHeight = parentHeight * 0.8;
 	var picWidth = parentWidth;
-	console.log(picHeight);
-	console.log(picWidth);
+	var picHeight = parentWidth * 9 / 16;
 	$(".pic-each img").height(picHeight);
 	$(".pic-each img").width(picWidth);
+	$(".pic-each-hover").height(picHeight);
+	$(".pic-each-hover").width(picWidth);
+	$(".pic-each section").height(parentHeight - picHeight);
+	$(".pic-each section").css("marginTop",picHeight + "px");
 }
 
-//公司介绍模块的动画
+/**
+ * 公司介绍模块的动画
+ */
 $(".tit").click(function(){
 	var $this = $(this);
 	var $another = getAnother($this);
@@ -70,6 +78,14 @@ $(".tit").click(function(){
 var getAnother = function(tit){
 	return tit.index() == 0 ? tit.next() : tit.prev();
 }
+
+/**
+ * 
+ */
+$(".pic-each").hover(function(){
+	$(this).children().first().toggleClass("hover-show");
+	$(this).children().last().toggleClass("pic-section-hover");
+})
 
 String.prototype.removePX =  function() {
 	return this.substring(0, this.length - 2);
