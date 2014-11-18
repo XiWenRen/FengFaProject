@@ -1,15 +1,19 @@
 $(document).ready(function(){
+	//设置标题位置
+	setTitMargin();
+	//设置图片高度
+	setNewsPicHeight();
 	//首页的元素块距离顶部高度
-	var marginTop = 600;
+	var windowHeight = $(window).height();
+	var menuHeight = $("#MyCollapse").height();
+	var carouselHeight = windowHeight - menuHeight;
+	$("#myCarousel").height(carouselHeight);
+	var marginTop = windowHeight;
 	$(".news").each(function(){
 		$(this).css("marginTop",marginTop + "px");
 		var prevHeight = $(this).css("height").removePX();
 		marginTop += parseInt(prevHeight);
 	});
-	//设置标题位置
-	setTitMargin();
-	//设置图片高度
-	setNewsPicHeight();
 });
 
 var setTitMargin = function(){
@@ -17,17 +21,6 @@ var setTitMargin = function(){
 	var parentHeight = $(".news").height();
 	var lineHeight = $(".tit").css("lineHeight").removePX();
 	$(".tit").css("marginTop",(parentHeight - lineHeight) / 2 + "px");
-	//设置左右距离
-/*	var aboutTxt = $("#about").text();
-	//因为是汉字，所以每个字的宽度就等于这个字的高度，也就等于这个字的字号
-	var parentWidth = $(".tit").width();
-	//保证两个标题的字数相同
-	console.log(parentWidth);
-	var txtWidth = aboutTxt.length * lineHeight;
-	console.log(txtWidth);
-	var marginWidth = (parentWidth - txtWidth) / 2;
-	$("#about").css("paddingRight",marginWidth + "px");
-	$("#tasks").css("paddingLeft",marginWidth + "px");*/
 }
 
 var setPicRowCenter = function(){
@@ -38,6 +31,12 @@ var setPicRowCenter = function(){
  * 设置首页展示图片的宽高,图片比例16/9
  */
 var setNewsPicHeight = function(){
+	var windowWidth = $(window).width();
+	if(windowWidth > 1400){
+		$(".pic-row").width(1280);
+		$(".pic-row").height(330);
+		$("#newsPic").height(980);
+	}
 	//获取图片父元素高度
 	var parentWidth = $(".pic-each").width();
 	var parentHeight = $(".pic-each").height();
