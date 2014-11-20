@@ -1,30 +1,44 @@
+var windowHeight = $(window).height();
+
 $(document).ready(function(){
 	//设置标题位置
 	setTitMargin();
+	//设置轮播模块的高度
+	setCarouselHeight();
 	//设置图片高度
 	setNewsPicHeight();
-	//首页的元素块距离顶部高度
-	var windowHeight = $(window).height();
-	var menuHeight = $("#MyCollapse").height();
+	//设置距顶部高度
+	setElementMarginTop();
+	//轮播动画
+	setInterval(carouselShow, 8000);
+});
+
+/**
+ * 设置轮播模块的高度
+ */
+var setCarouselHeight = function(){
+	var menuHeight = $(".collapse").height();
 	var carouselHeight = windowHeight - menuHeight;
-	$("#myCarousel").height(carouselHeight);
+	$(".carousel").css("height",carouselHeight + "px");
+}
+
+/**
+ * 首页的元素块距离顶部高度
+ */
+var setElementMarginTop = function(){
 	var marginTop = windowHeight;
 	$(".news").each(function(){
 		$(this).css("marginTop",marginTop + "px");
 		var prevHeight = $(this).css("height").removePX();
 		marginTop += parseInt(prevHeight);
 	});
-});
+}
 
 var setTitMargin = function(){
 	//首页的两个大标题距块顶部高度
 	var parentHeight = $(".news").height();
 	var lineHeight = $(".tit").css("lineHeight").removePX();
 	$(".tit").css("marginTop",(parentHeight - lineHeight) / 2 + "px");
-}
-
-var setPicRowCenter = function(){
-	
 }
 
 /**
@@ -47,9 +61,40 @@ var setNewsPicHeight = function(){
 	$(".pic-each img").width(picWidth);
 	$(".pic-each-hover").height(picHeight);
 	$(".pic-each-hover").width(picWidth);
-	$(".pic-each section").height(parentHeight - picHeight);
-	$(".pic-each section").width(picWidth);
-	$(".pic-each section").css("marginTop",picHeight + "px");
+	$(".pic-section").height(parentHeight - picHeight);
+	$(".pic-section").width(picWidth);
+	$(".pic-section").css("marginTop",picHeight + "px");
+}
+
+/*================================动画模块==================================*/
+
+/**
+ * 菜单动画
+ */
+$(".menu").hover(function(){
+	$(this).toggleClass("menu-active");
+});
+
+/**
+ * 轮播动画
+ */
+
+var carouselShow = function(){
+	var active = $(".carousel-active");
+	var next;
+	//如果是最后一个幻灯片，则从头开始显示，否则显示下一个
+	if($("#myCarousel").children().last().attr("id") == active.attr("id")){
+		next = active.parent().children().first();
+	}else{
+		next = active.next();
+	}
+	
+	active.animate({"opacity":"0.5"},500,function(){
+		active.animate({"opacity":"1"},500,function(){
+		active.removeClass("carousel-active");
+		next.addClass("carousel-active")
+	})
+	})
 }
 
 /**
@@ -59,7 +104,6 @@ $(".tit").click(function(){
 	var $this = $(this);
 	var $another = getAnother($this);
 	$("#newsArt-front").css("float",$this.index() == 0 ? "left" : "right");
-	console.log($another.attr("id"));
 	$(".tit").fadeOut(500);
 	if($another.css("display") == "none"){
 		$("#newsArt-front").animate({width:"100%"},1000,function(){
@@ -93,6 +137,15 @@ $(".pic-each-hover").hover(function(){
 },function(){
 	$(this).children().first().animate({marginTop:"0px"},300);
 })
+
+var isIE6Or7 = function(){
+	if (navigator.appName == "Microsoft Internet Explorer") {
+		if (navigator.appVersion.match(/6./i) == "6." || navigator.appVersion.match(/7./i) == "7.") {
+			return true;
+		}
+	}
+	return false;
+}
 
 String.prototype.removePX =  function() {
 	return this.substring(0, this.length - 2);

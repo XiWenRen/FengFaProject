@@ -1,88 +1,171 @@
 /*导航栏*/
 
-#MyCollapse {
-	background-color: #7ACE7C;
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+/* IE6兼容部分 CTM的IE */
+* html,
+* html body {
+	background-image: url(about:blank);
+	background-attachment: fixed
+}
+* html .ie6fixedTL {
+	position: absolute;
+	left: expression(eval(document.documentElement.scrollLeft));
+	top: expression(eval(document.documentElement.scrollTop))
+}
+* html .ie6fixedBR {
+	position: absolute;
+	left: expression(eval(document.documentElement.scrollLeft+document.documentElement.clientWidth-this.offsetWidth)-(parseInt(this.currentStyle.marginLeft, 10)||0)-(parseInt(this.currentStyle.marginRight, 10)||0));
+	top: expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop, 10)||0)-(parseInt(this.currentStyle.marginBottom, 10)||0)))
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/*菜单*/
+.collapse {
 	width: 100%;
-	max-height: 50px;
-	font-family: "微软雅黑";
-	font-size: 16px;
-	border: 0px;
+	height: 60px;
+	max-height: 60px;
+	background-color: #7ACE7C;
 	background-image: linear-gradient(-45deg, transparent 65%, #FFFFFF 65%, #FFFFFF 100%, transparent 100%, transparent);
 	background-image: -moz-linear-gradient(-45deg, transparent 65%, #FFFFFF 65%, #FFFFFF 100%, transparent 100%, transparent);
 	background-image: -ms-linear-gradient(-45deg, transparent 0%, #FFFFFF 0%, #FFFFFF 35%, transparent 35%, transparent);
 	background-image: -webkit-linear-gradient(-45deg, transparent 0%, #FFFFFF 0%, #FFFFFF 35%, transparent 35%, transparent);
+	position: fixed;
+	text-align: center;
 	box-shadow: 0px 1px 5px #5A5A5A;
+	z-index: 100;
 }
 
-#MyCollapse a {
-	color: white;
+.collapse-center{
+	width: 980px;
+	height: 100%;
+	margin: 0 auto;
 }
 
-#logo-front {
+.collapse-center .logobar {
 	width: 30%;
-	cursor: pointer;
-	height: 50px;
+	height: 100%;
+	line-height: 60px;
+	text-align: left;
+	font-size: 30px;
+	color: #7ACE7C;
+	float: left;
+	*background-color: #fff;
 }
 
-#logo {
+.collapse .menubar {
+	width: 70%;
+	height: 100%;
+	float: right;
+	overflow: hidden;
+}
+
+.collapse .menubar ul {
 	width: 100%;
-	font-family: "楷体";
-	text-align: right;
-	line-height: 20px;
-	padding: 15px;
 	float: left;
 }
 
-#menu {
-	padding-left: 10%;
+.menu {
+	width: 20%;
+	height: 100%;
+	display: block;
+	font-size: 22px;
+	color: #fff;
+	line-height: 60px;
+	list-style: none;
+	float: left;
+	cursor: pointer;
 }
 
-#menu > li > a:hover,
-#menu > li > a:checked {
+.menu-active {
 	background-color: #fff;
 	color: #7ACE7C;
 }
-/*轮播*/
 
-#myCarousel {
-	margin-top: 50px;
+/*轮播*/
+.carousel {
+	width: 100%;
+	height: 600px;
+	min-height: 600px;
+	margin-top: 60px;
+	position: fixed;
 }
 
-.hover {
+.carousel-item {
+	width: 100%;
+	height: 100%;
+	background-color: #777;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	display: none;
+	opacity: 0;
+}
+
+.carousel-active {
+	display: block;
+	opacity: 1;
+}
+
+#item1 {
+	background-image: url(../img/carousel-1.jpg);
+}
+
+#item2 {
+	background-image: url(../img/carousel-2.jpg);
+}
+
+#item3 {
+	background-image: url(../img/carousel-3.jpg);
+}
+
+.carousel-hover {
 	width: 100%;
 	height: 100%;
 	min-height: 550px;
-	position: fixed;
 	background-color: rgba(88, 88, 88, 0);
 	background-image: linear-gradient(-45deg, transparent 60%, rgba(255, 255, 255, .2) 60%, rgba(255, 255, 255, .2) 80%, transparent 80%, rgba(255, 255, 255, .2) 100%, transparent 100%, transparent);
 	background-image: -moz-linear-gradient(-45deg, transparent 60%, rgba(255, 255, 255, .2) 60%, rgba(255, 255, 255, .2) 80%, transparent 80%, rgba(255, 255, 255, .2) 100%, transparent 100%, transparent);
 	background-image: -webkit-linear-gradient(-45deg, transparent 20%, rgba(255, 255, 255, .2) 20%, rgba(255, 255, 255, .2) 40%, transparent 40%, rgba(255, 255, 255, .2) 100%, transparent 100%, transparent);
 	background-image: -ms-linear-gradient(-45deg, transparent 20%, rgba(255, 255, 255, .2) 20%, rgba(255, 255, 255, .2) 40%, transparent 40%, rgba(255, 255, 255, .2) 100%, transparent 100%, transparent);
+	text-align: center;
 	z-index: 10;
 }
 
-.carousel-inner {
-	height: 100%;
-}
-
-.carousel .item {
-	height: 100%;
-}
-
-.carousel-inner > .item > img {
-	height: 100%;
-}
-
 .carousel-caption {
-	margin-bottom: 10%;
+	width: 980px;
+	height: 100%;
+	margin: 0 auto;
+	padding-top: 500px;
+	text-align: center;
+	color: #fff;
 }
 
 .carousel-caption h1 {
-	font-size: 56px;
+	font-size: 46px;
+	line-height: 80px;
 }
 
-.carousel-caption p {
+.carousel-caption h3 {
 	font-size: 26px;
+	line-height: 80px;
+}
+
+.carousel .button {
+	width: 140px;
+	*width: 160px;
+	height: 40px;
+	border: 2px solid #fff;
+	margin: 0 auto;
+	font-size: 20px;
+	line-height: 40px;
+	cursor: pointer;
 }
 
 /*内容模块*/
@@ -131,6 +214,7 @@
 	height: 550px;
 	color: #fff;
 	padding: 15px;
+	*padding: 0px;
 	font-family: "微软雅黑";
 	font-size: 26px;
 	text-indent: 2em;
@@ -150,9 +234,9 @@
 
 .pic-row {
 	width: 980px;
+	height: 250px;
 	max-width: 100%;
 	min-width: 768px;
-	height: 250px;
 	margin: 0 auto;
 }
 
@@ -160,33 +244,37 @@
 	width: 980px;
 	height: 220px;
 	margin: 0 auto;
-	padding-top: 100px;
 	font-size: 50px;
-	line-height: 50px;
+	line-height: 220px;
 	color: #777;
 }
 
 .pic-each {
 	width: 33.33333333%;
+	*width: 326px;
 	height: 100%;
+	*height: 250px;
 	margin-bottom: 30px;
 	padding-left: 15px;
 	padding-right: 15px;
-	float: left;
-	text-align: center;
 	overflow: hidden;
+	float: left;
 }
 
 .pic-each-hover {
-	display: block;
+	*width: 382px;
+	*height: 214px;
 	position: absolute;
 	background-color: rgba(255,255,255,0.7);
+	*background-color: #fff;
 	text-align: center;
 	opacity: 0;
+	display: none;
 	z-index: 2;
 }
 
 .hover-show {
+	display: block;
 	opacity: 1;
 }
 
@@ -203,21 +291,29 @@
 .pic-each-angle {
 	width: 0;
     height: 0;
-    border-top: 50px solid #7ACE7C;
-    border-right: 50px solid transparent;
+    border-width: 50px 50px 0px 0px;
+    border-style: solid dashed dashed dashed;
+    border-color: #7ACE7C transparent transparent transparent;
     position: absolute;
     z-index: 1;
 }
 
 .pic-each img{
+	*width: 382px;
+	*height: 214px;
 	display: block;
 	position: absolute;
 }
 
 .pic-section {
+	*width: 382px;
+	*margin-top: 214px;
+	*position: absolute;
 	padding-top: 30px;
+	*padding-top: 0px;
 	font-size: 18px;
 	font-style: italic;
+	*line-height: 66px;
 	color: #7ACE7C;
 	text-align: center;
 }
