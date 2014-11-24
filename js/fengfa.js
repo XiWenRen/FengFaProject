@@ -79,22 +79,21 @@ $(".menu").hover(function(){
  * 轮播动画
  */
 
-var carouselShow = function(){
+var carouselShow = function() {
 	var active = $(".carousel-active");
 	var next;
 	//如果是最后一个幻灯片，则从头开始显示，否则显示下一个
-	if($("#myCarousel").children().last().attr("id") == active.attr("id")){
+	if ($("#myCarousel").children().last().attr("id") == active.attr("id")) {
 		next = active.parent().children().first();
-	}else{
+	} else {
 		next = active.next();
 	}
-	
-	active.animate({"opacity":"0.5"},500,function(){
-		active.animate({"opacity":"1"},500,function(){
-		active.removeClass("carousel-active");
-		next.addClass("carousel-active")
-	})
-	})
+
+	active.animate({"opacity": "0.5"}, 500);
+		active.animate({"opacity": "1"}, 500, function() {
+			active.removeClass("carousel-active");
+			next.addClass("carousel-active")
+		})
 }
 
 /**
@@ -132,10 +131,10 @@ $(".pic-each").hover(function(){
 	$(this).children().last().toggleClass("pic-section-hover");
 });
 
-$(".pic-each-hover").hover(function(){
-	$(this).children().first().animate({marginTop:"80px"},300);
+$(".pic-each").hover(function(){
+	$(this).children().first().children().animate({marginTop:"80px"},300);
 },function(){
-	$(this).children().first().animate({marginTop:"0px"},300);
+	$(this).children().first().children().animate({marginTop:"0px"},300);
 })
 
 var isIE6Or7 = function(){
