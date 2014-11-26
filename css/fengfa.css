@@ -377,6 +377,7 @@ a {
 .menu-left {
 	height: 100%;
 	width: 30%;
+	float: left;
 	background-color: rgba(213,213,213,0.5);
 }
 
@@ -406,5 +407,8 @@ a {
 .detail-article {
 	width: 70%;
 	height: 100%;
-	
+	float: right;
+	font-size: 18px;
+	padding: 20px;
+	text-indent: 2em;
 }
