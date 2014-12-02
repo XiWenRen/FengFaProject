@@ -17,9 +17,7 @@ $(document).ready(function(){
  * 设置轮播模块的高度
  */
 var setCarouselHeight = function(){
-	var menuHeight = $(".collapse").height();
-	var carouselHeight = windowHeight - menuHeight;
-	$(".carousel").css("height",carouselHeight + "px");
+	$(".carousel").css("height",windowHeight + "px");
 }
 
 /**
@@ -78,7 +76,6 @@ $(".menu").hover(function(){
 /**
  * 轮播动画
  */
-
 var carouselShow = function() {
 	var active = $(".carousel-active");
 	var next;
@@ -88,12 +85,12 @@ var carouselShow = function() {
 	} else {
 		next = active.next();
 	}
-
-	active.animate({"opacity": "0.5"}, 500);
-		active.animate({"opacity": "1"}, 500, function() {
-			active.removeClass("carousel-active");
-			next.addClass("carousel-active")
-		})
+	active.animate({"opacity": "0"}, 1000, function(){
+		active.removeClass("carousel-active");
+	});
+	next.animate({"opacity": "1"}, 1000, function(){
+		next.addClass("carousel-active");
+	});
 }
 
 /**
