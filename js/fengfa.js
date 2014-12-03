@@ -14,6 +14,25 @@ $(document).ready(function(){
 });
 
 /**
+ * 窗口滚动改变导航栏样式
+ */
+$(window).scroll(function() {
+	var offSetTop = $("#newsArt-back").offset().top;
+	var winScrollTop = $(window).scrollTop();
+	var topBarHeight = $(".collapse").height();
+	toggleCollapseClass((offSetTop - winScrollTop) < topBarHeight);
+});
+
+var toggleCollapseClass = function(b){
+	var isCollapseBig = $("#myCollapse").hasClass("collapse");
+	var isChangeAble = (b && isCollapseBig) || (!b && !isCollapseBig);
+	if(isChangeAble){
+		$("#myCollapse").animate({height:isCollapseBig ? "50px" : "100px"},500);
+		$("#myCollapse").removeClass(isCollapseBig ? "collapse" : "collapse-small");
+		$("#myCollapse").addClass(isCollapseBig ? "collapse-small" : "collapse");
+	}
+}
+/**
  * 设置轮播模块的高度
  */
 var setCarouselHeight = function(){
@@ -92,6 +111,19 @@ var carouselShow = function() {
 		next.addClass("carousel-active");
 	});
 }
+
+/**
+ * 轮播按钮点击后平滑向下滚动
+ */
+$(".carousel-caption .button").click(function(){
+	var $scorllEle = $($(this).children().first().attr("href"));
+	$("html, body").animate({
+		scrollTop:$scorllEle.offset().top + "px"
+		},{
+			duration:800,
+			easing: "swing"
+		});
+});
 
 /**
  * 公司介绍模块的动画
