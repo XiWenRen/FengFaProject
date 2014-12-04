@@ -153,7 +153,7 @@ var getAnother = function(tit){
 }
 
 /**
- * 
+ * 图片动画
  */
 $(".pic-each").hover(function(){
 	$(this).children().first().toggleClass("hover-show");
@@ -161,9 +161,22 @@ $(".pic-each").hover(function(){
 });
 
 $(".pic-each").hover(function(){
-	$(this).children().first().children().animate({marginTop:"80px"},300);
+	$(this).find(".pic-fullscreen").animate({marginTop:"80px"},300);
 },function(){
-	$(this).children().first().children().animate({marginTop:"0px"},300);
+	$(this).find(".pic-fullscreen").animate({marginTop:"0px"},300);
+})
+
+/**
+ * 点击放大按钮出现全屏图片
+ */
+$(".pic-fullscreen").click(function(){
+	$(".full-img-container").slideDown();
+})
+
+$(".full-img-container").click(function(){
+	if($(this) != $(".img-wrap")){
+		$(".full-img-container").slideUp();
+	}
 })
 
 var isIE6Or7 = function(){
